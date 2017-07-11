@@ -3,6 +3,7 @@ module ImageTagging
     def self.all_products_array(params={})
       p_arr = []
       find_params = { limit: limit }.merge(params)
+      puts pages
       pages.times do |p|
         p_arr << ShopifyAPI::Product.find(:all, params: find_params.merge({ page: p}) ) 
       end
@@ -15,7 +16,7 @@ module ImageTagging
     end
 
     def self.pages
-      count/limit
+      (count/limit) + 1
     end
 
     def self.limit

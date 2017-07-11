@@ -1,5 +1,5 @@
 module ImageTagging
-  class Tag
+  class ImageTag
     def initialize(product)
       @product = product
       @initial_product_tags = product.tags
@@ -71,7 +71,7 @@ module ImageTagging
     def self.process_all_tags
       Product.all_products_array.each do |page|
         page.each do |product|
-          Tag.new(product).add_image_tags
+          ImageTag.new(product).add_image_tags
         end
       end
     end
@@ -79,7 +79,7 @@ module ImageTagging
     def self.process_recent_tags
       Product.recent_products_array.each do |page|
         page.each do |product|
-          Tag.new(product).add_image_tags
+          ImageTag.new(product).add_image_tags
         end
       end
     end
