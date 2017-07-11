@@ -1,6 +1,6 @@
-require "size_tagging/version"
+require "image_tagging/version"
 
-module SizeTagging
+module ImageTagging
   require "product/product"
   require "tag/tag"
 

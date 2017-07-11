@@ -1,4 +1,4 @@
-module SizeTagging
+module ImageTagging
   module Product
     def self.all_products_array(params={})
       p_arr = []

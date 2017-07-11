@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'size_tagging/version'
+require 'image_tagging/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "size_tagging"
-  spec.version       = SizeTagging::VERSION
+  spec.name          = "image_tagging"
+  spec.version       = ImageTagging::VERSION
   spec.authors       = ["Jonny Dalgleish"]
   spec.email         = ["fighella@gmail.com"]
 
-  spec.summary       = %q{Adds size tags to Shopify Products.}
+  spec.summary       = %q{Adds image tags to Shopify Products.}
   spec.homepage      = "http://git.30acres.com.au"
   spec.license       = "MIT"
 
