@@ -3,20 +3,21 @@ module ImageTagging
     def initialize(product)
       @product = product
       @initial_product_tags = product.tags
+      @tag_name = 'Admin: No Images'
     end
 
-    def product_has_image
-      binding.pry
+    def product_has_images?
+      @product.images.any?
     end
 
     def removed_initial_tags
       # binding.pry
-      @product.tags.split(',').delete_if { |x| x.include?('Admin: ') }
+      @product.tags.split(',').delete_if { |x| x.include?(@tag_name) }
     end
 
     def add_image_tags
       @product.tags = removed_initial_tags
-      if has_size_option?      
+      if product_has_image?
         if has_variants?
           variants.each do |variant|
             @product.tags = [@product.tags,image_tag(variant)].join(',')
@@ -62,14 +63,14 @@ module ImageTagging
 
     def image_tag(v)
       tag = ''
-      if v.inventory_quantity >= 1
-        tag = TAG_NAME
+      unless product_has_images?
+        tag = @tag_name
       end
       tag
     end
 
     def self.process_all_tags
-      Product.all_products_array.each do |page|
+      ImageTagging::Product.all_products_array.each do |page|
         page.each do |product|
           ImageTag.new(product).add_image_tags
         end
@@ -77,7 +78,7 @@ module ImageTagging
     end
 
     def self.process_recent_tags
-      Product.recent_products_array.each do |page|
+      ImageTagging::Product.recent_products_array.each do |page|
         page.each do |product|
           ImageTag.new(product).add_image_tags
         end
