@@ -70,8 +70,7 @@ module ImageTagging
     end
 
     def self.process_all_tags
-      # ImageTagging::
-        Product.all_products_array.each do |page|
+      ImageTagging::ImageProduct.all_products_array.each do |page|
         page.each do |product|
           ImageTag.new(product).add_image_tags
         end
@@ -79,8 +78,7 @@ module ImageTagging
     end
 
     def self.process_recent_tags
-      # ImageTagging::
-        Product.recent_products_array.each do |page|
+      ImageTagging::ImageProduct.recent_products_array.each do |page|
         page.each do |product|
           ImageTag.new(product).add_image_tags
         end

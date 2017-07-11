@@ -1,7 +1,7 @@
 require "image_tagging/version"
 
 module ImageTagging
-  require "product/product"
+  require "image_product/image_product"
   require "image_tag/image_tag"
 
   def self.update_all_products
