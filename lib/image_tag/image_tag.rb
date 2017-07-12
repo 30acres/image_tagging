@@ -17,7 +17,7 @@ module ImageTagging
 
     def add_image_tags
       @product.tags = removed_initial_tags
-      if product_has_image?
+      if product_has_images?
         if has_variants?
           variants.each do |variant|
             @product.tags = [@product.tags,image_tag(variant)].join(',')
