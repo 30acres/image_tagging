@@ -17,7 +17,7 @@ module ImageTagging
 
     def add_image_tags
       @product.tags = removed_initial_tags
-      if product_has_images?
+      unless product_has_images?
         @product.tags = [@product.tags,image_tag].join(',')
       end
       puts "PRODUCT ID (before): #{@product.id}"
