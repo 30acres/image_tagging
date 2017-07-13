@@ -18,11 +18,7 @@ module ImageTagging
     def add_image_tags
       @product.tags = removed_initial_tags
       if product_has_images?
-        if has_variants?
-          variants.each do |variant|
-            @product.tags = [@product.tags,image_tag(variant)].join(',')
-          end
-        end
+        @product.tags = [@product.tags,image_tag].join(',')
       end
       puts "PRODUCT ID (before): #{@product.id}"
       puts "#{initial_tags} ====> #{cleaned_tags}"
@@ -61,7 +57,7 @@ module ImageTagging
       tags.split(',').map{ |t| t.strip }.uniq.sort
     end
 
-    def image_tag(v)
+    def image_tag
       tag = ''
       unless product_has_images?
         tag = @tag_name
